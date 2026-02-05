@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team</title>
+</head>
+<body>
+    <h1>Team Name : {{team1name}}</h1>
+    <h2>Captain : {{captain1}}</h2>
+    <h2>
+        {% for player in players1 %}
+        <li>{{ player }}</li>
+        {% endfor %}
+    </h2>
+    <h3>Trophy : {{ csktrophy }}</h3>
+    {% if csktrophy >= 5 %}
+    <h2>Champion</h2>
+    {% else %}
+    <h2>Runner Up</h2>
+    {% endif %}
+    <h1>Team Name : {{team2name}}</h1>
+    <h2>Captain : {{captain2}}</h2>
+    <h2>
+        {% for player in players2 %}
+        <li>{{ player }}</li>
+        {% endfor %}
+    </h2>
+    <h3>Trophy : {{ rcbtrophy }}</h3>
+    {% if rcbtrophy >= 5 %}
+    <h2>Champion</h2>
+    {% else %}
+    <h2>Runner Up</h2>
+    {% endif %}
+</body>
+</html>
