@@ -9,6 +9,8 @@ class student(models.Model):
     
     class Meta:
         db_table = "student"
+    def __str__(self):
+        return self.studentName
 
 class product(models.Model):
     productName = models.CharField(max_length=100)
@@ -20,6 +22,8 @@ class product(models.Model):
     
     class Meta:
         db_table = "product"
+    def __str__(self):
+        return self.productName
 
 class Branch(models.Model):
     branchName = models.CharField(max_length=100)
@@ -30,3 +34,5 @@ class Branch(models.Model):
     
     class Meta:
         db_table = "branch"
+    def __str__(self):
+        return self.branchName
