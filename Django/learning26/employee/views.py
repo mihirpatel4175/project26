@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .models import Employee
+from django.shortcuts import render, HttpResponse
+from .models import Employee,Course,Teacher,Studentf,Productf
+from .forms import EmployeeForm,CourseForm,TeacherForm,Studentf,Productf
 
 # Create your views here.
 def employeeList(request):
@@ -72,3 +73,50 @@ def employeeFilter(request):
     print("query 16",employee16) 
     print("query 17",employee17) 
     return render(request, 'employee/employeeFilter.html')
+
+def createEmployeeWithForm(request):
+    print(request.method)
+    if request.method == "POST":
+        form = EmployeeForm(request.POST)
+        form.save() #it same as create
+        return HttpResponse("EMPLOYEE CREATED...")
+    else:
+        #form object create --> html
+        form = EmployeeForm() #form object        
+        return render(request,"employee/createEmployeeForm.html",{"form":form})
+
+def createCourse(request):
+    if request.method == "POST":
+        form = CourseForm(request.POST) #csrftoken,form alll fileds data
+        form.save() #create.. insert into table 
+        return HttpResponse("COURSE CREATED...")
+    else:
+        form = CourseForm()
+        return render(request,"employee/createCourse.html",{"form":form})
+
+def createTeacher(request):
+    if request.method == "POST":
+        form = TeacherForm(request.POST) #csrftoken,form alll fileds data
+        form.save() #create.. insert into table 
+        return HttpResponse("TEACHER CREATED...")
+    else:
+        form = TeacherForm()
+        return render(request,"employee/createTeacher.html",{"form":form})
+
+def createProduct(request):
+    if request.method == "POST":
+        form = ProductForm(request.POST) #csrftoken,form alll fileds data
+        form.save() #create.. insert into table 
+        return HttpResponse("PRODUCT CREATED...")
+    else:
+        form = ProductForm()
+        return render(request,"employee/createProduct.html",{"form":form})
+
+def createStudent(request):
+    if request.method == "POST":
+        form = StudentForm(request.POST) #csrftoken,form alll fileds data
+        form.save() #create.. insert into table 
+        return HttpResponse("STUDENT CREATED...")
+    else:
+        form = StudentForm()
+        return render(request,"employee/createStudent.html",{"form":form})
